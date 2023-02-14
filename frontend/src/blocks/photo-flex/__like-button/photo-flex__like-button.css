@@ -1,0 +1,16 @@
+.photo-flex__like-button {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/like-button.svg);
+  background-repeat: no-repeat;
+  border: 0;
+  background-color: transparent;
+  grid-area: like-butt;
+  justify-self: center;
+  align-self: center;
+}
+
+.photo-flex__like-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

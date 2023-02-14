@@ -1,0 +1,12 @@
+.popup__error_position_bottom {
+  top: 215px;
+  left: 19px;
+}
+
+@media screen and (min-width: 880px) {
+  .popup__error_position_bottom {
+    top: 205px;
+    left: 35px;
+  }
+}
+

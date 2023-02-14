@@ -1,0 +1,14 @@
+.photo-flex__item {
+  width: 282px;
+  height: 361px;
+  background: #FFF;
+  position: relative;
+  border-radius: 10px;
+  list-style-type: none;
+  display: grid;
+  grid-template-rows: 282px 79px;
+  grid-template-columns: 1fr 62px;
+  grid-template-areas:
+  "img img"
+  "title like-butt";
+}

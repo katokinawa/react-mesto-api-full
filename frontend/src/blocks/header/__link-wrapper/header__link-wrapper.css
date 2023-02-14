@@ -1,0 +1,9 @@
+.header__link-wrapper {
+  text-align: center;
+}
+
+@media screen and (min-width: 880px) {
+  .header__link-wrapper {
+    display: flex;
+  }
+}

@@ -1,0 +1,17 @@
+.photo-flex__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media screen and (min-width: 1185px) {
+  .photo-flex__list {
+    column-gap: 17px;
+    display: grid;
+    grid-template-columns: repeat(3, 282px);
+    grid-template-rows: repeat(2, 361px);
+  }
+}

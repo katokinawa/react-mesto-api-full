@@ -1,0 +1,14 @@
+.authorization {
+    background-color: #000000;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 260px;
+}
+
+@media screen and (min-width: 880px) {
+    .authorization {
+        max-width: 358px;
+    }
+}

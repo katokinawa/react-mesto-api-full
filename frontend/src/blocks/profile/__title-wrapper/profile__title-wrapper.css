@@ -1,0 +1,16 @@
+.profile__title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 19px 0 5px 27px;
+}
+
+@media screen and (min-width: 880px) {
+  .profile__title-wrapper {
+    margin: 0;
+    grid-row: 1;
+    grid-column: 2;
+    align-self: end;
+    white-space: pre-wrap;
+  }
+}
