@@ -9,6 +9,7 @@ const auth = require('./middlewares/auth');
 const NotFound = require('./errors/NotFound');
 // eslint-disable-next-line no-useless-escape
 const regExpUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+require('dotenv').config();
 
 const app = express();
 
@@ -19,17 +20,12 @@ mongoose
   .connect('mongodb://127.0.0.1:27017/mestodb')
   .then(() => console.log('Connected!')); // обычная проверочка подключения к базе данных.
 
-app.use(cookieParser());
-app.use(bodyParser.json()); // для собирания JSON-формата
-app.use(bodyParser.urlencoded({ extended: true })); // для приёма веб-страниц внутри POST-запроса
-app.use(requestLogger);
-
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'https://katokinawa.front.nomoredomainsclub.ru',
   'http://katokinawa.front.nomoredomainsclub.ru',
-  'localhost:3000',
-  'localhost:3001',
+  'https://localhost:3000',
+  'http://localhost:3000',
 ];
 
 app.use((req, res, next) => {
@@ -51,6 +47,11 @@ app.use((req, res, next) => {
 
   return next();
 });
+
+app.use(cookieParser());
+app.use(bodyParser.json()); // для собирания JSON-формата
+app.use(bodyParser.urlencoded({ extended: true })); // для приёма веб-страниц внутри POST-запроса
+app.use(requestLogger);
 
 app.post(
   '/signin',

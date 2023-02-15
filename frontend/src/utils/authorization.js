@@ -23,7 +23,11 @@ export const login = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-  }).then(checkRes);
+  }).then(checkRes)
+  .then((data) => {
+    localStorage.setItem("token", data.token);
+    return data;
+  });
 };
 
 export const checkToken = (token) => {
