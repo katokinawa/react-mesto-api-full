@@ -132,8 +132,8 @@ module.exports.login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-        })
-        .send({ message: 'Аутентификация успешна!' });
+        });
+      return res.send({ token });
     })
     .catch((err) => {
       next(err);

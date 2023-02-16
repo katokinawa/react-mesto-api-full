@@ -24,19 +24,20 @@ export const login = ({ email, password }) => {
     },
     body: JSON.stringify({ email: email, password: password }),
   }).then(checkRes)
-  .then((data) => {
-    localStorage.setItem("token", data.token);
-    return data;
-  });
+    .then((data) => {
+      if (data.token) {
+      localStorage.setItem("jwt", data.token);
+      return data;
+    }
+  })
 };
 
 export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      "Authorization": `Bearer ${token}`,
     },
   }).then(checkRes);
 };

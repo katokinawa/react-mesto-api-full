@@ -42,6 +42,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
+    console.log(token)
     if (token) {
       auth
         .checkToken(token)
@@ -79,11 +80,13 @@ function App() {
     auth
       .login(data)
       .then((res) => {
-        if (res.token) {
+        if(res.token) {
           setLoggedIn(true);
           setEmail(data.email);
           localStorage.setItem("jwt", res.token);
           history.push("/");
+        } else {
+          console.log('Токена нет.')
         }
       })
       .catch(() => {
