@@ -77,7 +77,7 @@ class Api {
 }
 
 export const api = new Api({
-  url: "https://katokinawa.front.nomoredomainsclub.ru/api",
+  url: "katokinawa.front.nomoredomainsclub.ru/api",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

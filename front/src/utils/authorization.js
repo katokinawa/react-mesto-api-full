@@ -1,4 +1,4 @@
-const BASE_URL = "https://katokinawa.front.nomoredomainsclub.ru/api";
+const BASE_URL = "katokinawa.front.nomoredomainsclub.ru/api";
 
 function checkRes(res) {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
