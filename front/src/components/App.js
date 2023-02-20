@@ -45,7 +45,7 @@ function App() {
     if (token) {
       auth
         .checkToken(token)
-        .then(() => {
+        .then((res) => {
           setEmail(res.email);
           setLoggedIn(true);
         })
