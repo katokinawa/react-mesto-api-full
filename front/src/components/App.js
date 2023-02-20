@@ -42,13 +42,11 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if (token && (loggedIn === true)) {
+    if (token) {
       auth
         .checkToken(token)
-        .then((res) => {
-          setEmail(res.email);
+        .then(() => {
           setLoggedIn(true);
-          history.push("/");
         })
         .catch((err) => {
           if (err.status === 400) {
@@ -59,7 +57,14 @@ function App() {
           }
         });
     }
-  }, [history]);
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      setEmail(res.email);
+      history.push('/')
+    }
+  }, [loggedIn, history])
 
   function handleRegister(data) {
     auth
