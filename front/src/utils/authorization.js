@@ -41,7 +41,6 @@ export const checkToken = (token) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    credentials: 'include',
   })
     .then(checkRes);
 };
