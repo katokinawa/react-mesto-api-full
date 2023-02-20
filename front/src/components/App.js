@@ -42,7 +42,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if (token) {
+    if (token && (loggedIn === true)) {
       auth
         .checkToken(token)
         .then((res) => {
@@ -59,7 +59,7 @@ function App() {
           }
         });
     }
-  }, [history, loggedIn]);
+  }, [history]);
 
   function handleRegister(data) {
     auth
