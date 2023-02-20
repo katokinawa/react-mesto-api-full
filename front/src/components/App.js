@@ -47,6 +47,7 @@ function App() {
       setLoggedIn(true);
       history.push("/");
     })
+    .catch((err) => console.log(err));
   }, [history]);
 
   function handleRegister(data) {
