@@ -187,7 +187,6 @@ function App() {
               cards={cards}
               onCardLike={handleCardLike}
               onCardDelete={handleCardDelete}
-              loggedOut={handleLogout}
             />
             <Route path="/sign-in">
               <Login onLogin={handleLogin} />
