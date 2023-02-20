@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.katokinawa.nomoredomains.work";
+const BASE_URL = "http://katokinawa.front.nomoredomainsclub.ru";
 
 function checkRes(res) {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
@@ -23,24 +23,15 @@ export const login = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-  })
-  .then(checkRes)
-  .then((data) => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-        return data;
-      }
-    })
+  }).then(checkRes);
 };
 
-export const checkToken = (token) => {
-  if (token === null) return Promise.reject(``);
+export const getUser = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-  })
-    .then(checkRes);
+  }).then(checkRes);
 };

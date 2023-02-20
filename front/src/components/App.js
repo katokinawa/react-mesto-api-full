@@ -41,30 +41,13 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      auth
-        .checkToken(token)
-        .then((res) => {
-          setEmail(res.email);
-          setLoggedIn(true);
-        })
-        .catch((err) => {
-          if (err.status === 400) {
-            console.log("400 — Токен не передан или передан не в том формате");
-          }
-          if (err.status === 401) {
-            console.log("401 — Переданный токен некорректен");
-          }
-        });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (loggedIn) {
-      history.push('/')
-    }
-  }, [loggedIn, history])
+    auth.getUser()
+    .then((res) => {
+      setEmail(res.email);
+      setLoggedIn(true);
+      history.push("/");
+    })
+  }, [history]);
 
   function handleRegister(data) {
     auth
