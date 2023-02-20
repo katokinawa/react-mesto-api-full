@@ -76,7 +76,7 @@ class Api {
 }
 
 export const api = new Api({
-  url: "https://mesto.nomoreparties.co/v1/cohort-52",
+  url: "https://api.katokinawa.nomoredomains.work",
   headers: {
     authorization: "e5ef6c8f-bf2d-4d8f-9be9-29b7fb227f3e",
     "Content-Type": "application/json",
