@@ -46,6 +46,7 @@ function App() {
       auth
         .checkToken(token)
         .then(() => {
+          setEmail(res.email);
           setLoggedIn(true);
         })
         .catch((err) => {
@@ -61,7 +62,6 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      setEmail(res.email);
       history.push('/')
     }
   }, [loggedIn, history])
