@@ -1,4 +1,4 @@
-84.252.128.154
+51.250.94.57
 https://katokinawa.front.nomoredomainsclub.ru
 https://api.katokinawa.nomoredomains.work
 
