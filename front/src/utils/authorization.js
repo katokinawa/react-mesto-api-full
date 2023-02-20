@@ -43,5 +43,5 @@ export const checkToken = (token) => {
     },
     credentials: 'include',
   })
-    .then(checkResponse)
+    .then(checkRes);
 };

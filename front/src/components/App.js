@@ -44,7 +44,7 @@ function App() {
     const token = localStorage.getItem("jwt");
     if (token) {
       auth
-        .checkToken()
+        .checkToken(token)
         .then((res) => {
           setEmail(res.email);
           setLoggedIn(true);
