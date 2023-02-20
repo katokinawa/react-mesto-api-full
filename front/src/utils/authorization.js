@@ -32,3 +32,16 @@ export const login = ({ email, password }) => {
       }
     })
 };
+
+export const checkToken = (token) => {
+  if (token === null) return Promise.reject(``);
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  })
+    .then(checkResponse)
+};
