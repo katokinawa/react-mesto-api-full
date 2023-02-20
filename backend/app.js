@@ -7,6 +7,7 @@ const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const NotFound = require('./errors/NotFound');
+
 // eslint-disable-next-line no-useless-escape
 const regExpUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 require('dotenv').config();
@@ -26,6 +27,8 @@ const allowedCors = [
   'http://katokinawa.front.nomoredomainsclub.ru',
   'https://localhost:3000',
   'http://localhost:3000',
+  'https://localhost:3001',
+  'http://localhost:3001',
 ];
 
 app.use((req, res, next) => {
@@ -54,7 +57,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // для приёма ве�
 app.use(requestLogger);
 
 app.post(
-  '/signin',
+  '/api/signin',
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),
@@ -65,7 +68,7 @@ app.post(
 );
 
 app.post(
-  '/signup',
+  '/api/signup',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().min(2).max(30),
@@ -78,8 +81,8 @@ app.post(
   createUser,
 );
 
-app.use('/users', auth, require('./routes/user'));
-app.use('/cards', auth, require('./routes/card'));
+app.use('/api/users', auth, require('./routes/user'));
+app.use('/api/cards', auth, require('./routes/card'));
 
 app.use(errorLogger); // логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate

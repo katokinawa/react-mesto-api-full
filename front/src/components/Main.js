@@ -8,6 +8,8 @@ function Main(props) {
 
   return (
     <main className="content">
+      {currentUser.avatar}
+
       <section className="profile content__profile">
         <div className="profile__pen"></div>
         <img
@@ -40,8 +42,8 @@ function Main(props) {
         <ul className="photo-flex__list">
           {props.cards.map((card) => (
             <Card
-              key={card._id}
               card={card}
+              key={card._id}
               onCardClick={props.onCardClick}
               onCardLike={props.onCardLike}
               onCardDelete={props.onCardDelete}

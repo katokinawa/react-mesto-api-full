@@ -36,6 +36,7 @@ class Api {
       return this._getResponse(res);
     });
   }
+  
   setUserAvatar(avatar) {
     return fetch(`${this._url}/users/me/avatar`, {
       headers: this._header,
@@ -78,7 +79,7 @@ class Api {
 export const api = new Api({
   url: "https://api.katokinawa.nomoredomains.work",
   headers: {
-    authorization: "e5ef6c8f-bf2d-4d8f-9be9-29b7fb227f3e",
+    Accept: "application/json",
     "Content-Type": "application/json",
   },
 });

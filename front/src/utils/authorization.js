@@ -23,21 +23,23 @@ export const login = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email: email, password: password }),
-  }).then(checkRes)
-    .then((data) => {
-      if (data.token) {
-      localStorage.setItem("jwt", data.token);
-      return data;
-    }
   })
+  .then(checkRes)
+  .then((data) => {
+      if (data.token) {
+        localStorage.setItem("jwt", data.token);
+        return data;
+      }
+    })
 };
 
 export const checkToken = (token) => {
+  if (token === null) return Promise.reject(``);
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   }).then(checkRes);
 };

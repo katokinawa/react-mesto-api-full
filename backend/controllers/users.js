@@ -11,7 +11,7 @@ const Conflict = require('../errors/Conflict');
 module.exports.getUsers = (req, res, next) => {
   // Получить массив пользователей, то есть всех
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -20,7 +20,7 @@ module.exports.findUserById = (req, res, next) => {
   User.findById(req.params.userId)
     .then((user) => {
       if (user) {
-        return res.send({ data: user });
+        return res.send(user);
       }
       return next(new NotFound('Пользователь по указанному _id не найден.'));
     })
@@ -71,7 +71,7 @@ module.exports.updateProfile = (req, res, next) => {
   )
     .then((user) => {
       if (user) {
-        return res.send({ data: user });
+        return res.send(user);
       }
       return next(new NotFound('Пользователь с указанным _id не найден.'));
     })
@@ -95,7 +95,7 @@ module.exports.updateAvatar = (req, res, next) => {
   )
     .then((user) => {
       if (user) {
-        return res.send({ data: user });
+        return res.send(user);
       }
       return next(new NotFound('Запрашиваемый пользователь не найден.'));
     })
@@ -113,7 +113,7 @@ module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (user) {
-        return res.send({ data: user });
+        return res.send(user);
       }
       return next(new NotFound('Пользователь по указанному _id не найден.'));
     })
@@ -132,6 +132,7 @@ module.exports.login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
+          sameSite: true,
         });
       return res.send({ token });
     })

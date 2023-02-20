@@ -42,12 +42,11 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    console.log(token)
     if (token) {
       auth
         .checkToken(token)
         .then((res) => {
-          setEmail(res.data.email);
+          setEmail(res.email);
           setLoggedIn(true);
           history.push("/");
         })
@@ -80,13 +79,11 @@ function App() {
     auth
       .login(data)
       .then((res) => {
-        if(res.token) {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
           setLoggedIn(true);
           setEmail(data.email);
-          localStorage.setItem("jwt", res.token);
           history.push("/");
-        } else {
-          console.log('Токена нет.')
         }
       })
       .catch(() => {
@@ -113,8 +110,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, !isLiked)
