@@ -59,7 +59,7 @@ function App() {
           }
         });
     }
-  }, [history]);
+  }, [history, loggedIn]);
 
   function handleRegister(data) {
     auth
