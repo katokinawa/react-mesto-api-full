@@ -33,5 +33,5 @@ export const getUser = () => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-  });
+  }).then(checkRes);
 };
