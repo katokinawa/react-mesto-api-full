@@ -41,12 +41,15 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
-    auth.getUser()
-    .then((res) => {
-      setEmail(res.email);
-      setLoggedIn(true);
-      history.push("/");
-    });
+    const token = localStorage.getItem('jwt');
+    if(token) {
+      auth.getUser()
+      .then((res) => {
+        setEmail(res.email);
+        setLoggedIn(true);
+        history.push("/");
+      });
+    }
   }, [history]);
 
   function handleRegister(data) {
