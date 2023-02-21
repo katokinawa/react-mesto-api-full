@@ -9,7 +9,10 @@ module.exports = (req, res, next) => {
   }
   let payload;
   try {
-    payload = jwt.verify(req.cookies.jwt, `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`);
+    payload = jwt.verify(
+      req.cookies.jwt,
+      `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`,
+    );
   } catch (err) {
     return next(new Unauthorized('Необходима авторизация.'));
   }
